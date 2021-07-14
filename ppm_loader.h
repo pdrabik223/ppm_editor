@@ -8,8 +8,8 @@
 #include <fstream>
 #include <string>
 
-#ifndef CONSOLE_CHESS_GUI_PPM_LOADER_H_
-#define CONSOLE_CHESS_GUI_PPM_LOADER_H_
+#ifndef PPM_LOADER_H_
+#define PPM_LOADER_H_
 
 Canvas &LoadFromPpm(std::string path);
 
@@ -26,4 +26,4 @@ unsigned char CheckColor(int color);
 void ReadHeader(std::fstream &plik);
 
 
-#endif // CONSOLE_CHESS_GUI_PPM_LOADER_H_
+#endif // PPM_LOADER_H_
