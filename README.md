@@ -1,2 +1,4 @@
 # ppm_editor
-tool to edit .ppm files
+Tool to edit .ppm files
+
+  
