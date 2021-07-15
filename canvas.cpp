@@ -7,8 +7,7 @@ Coord::Coord(const size_t &w, const size_t &h) : w(w), h(h) {}
 
 size_t Coord::Convert21D(const size_t &w) { return h * w + w; }
 
-
-Coord::Coord(): w(0), h(0) {}
+Coord::Coord() : w(0), h(0) {}
 
 RGBColor &Canvas::operator[](size_t position) { return pixels_[position]; }
 
@@ -41,7 +40,11 @@ void Canvas::SetPixel(Coord position, RGBColor color) {
   pixels_[position.Convert21D(w_)] = color;
 }
 
-RGBColor &Canvas::GetPixel(Coord position) {
+RGBColor &Canvas::Pixel(Coord position) {
+  return pixels_[position.Convert21D(w_)];
+}
+
+RGBColor Canvas::GetPixel(Coord position) const {
   return pixels_[position.Convert21D(w_)];
 }
 
@@ -49,4 +52,18 @@ void Canvas::SwapColors(RGBColor old_color, RGBColor new_color) {
   for (int i = 0; i < w_ * h_; ++i)
     if (pixels_[i] == old_color)
       pixels_[i] = new_color;
+}
+size_t Canvas::GetWidth() const { return w_; }
+size_t Canvas::GetHeight() const { return h_; }
+std::string Canvas::GetInfo() {
+  return "Width: " + std::to_string(GetWidth()) +
+         " Height: " + std::to_string(GetHeight()) + "\n";
+}
+size_t Canvas::CountColor(RGBColor color) {
+  size_t counter = 0;
+  for (int i = 0; i < w_ * h_; ++i)
+    if (pixels_[i] == color)
+      counter++;
+
+  return counter;
 }

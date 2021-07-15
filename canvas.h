@@ -6,6 +6,7 @@
 #define PPM_EDITOR_CMAKE_BUILD_DEBUG_CANVAS_H_
 #include "ppm/rgb_color.h"
 #include <cstddef>
+#include <string>
 
 struct Coord{
   Coord();
@@ -48,7 +49,7 @@ public:
   /// \brief dangerous way to access a pixel in canvas
   /// \param position 2d Coord
   /// \return the reference to chosen pixel
-  RGBColor &GetPixel(Coord position);
+  RGBColor &Pixel(Coord position);
 
   /// \brief dangerous way to access a pixel in canvas <br>
   /// direct access to data in memory
@@ -56,12 +57,19 @@ public:
   /// \return the reference to chosen pixel
   RGBColor &operator[](size_t position);
 
+  RGBColor GetPixel(Coord position) const ;
+
+  std::string GetInfo();
+
+  size_t CountColor(RGBColor color);
 
   ///
   /// \param old_color every instance of this color will be replaced with new_color
   /// \param new_color the replacement
   void SwapColors(RGBColor old_color,RGBColor new_color);
 
+  size_t GetWidth() const;
+  size_t GetHeight() const;
 
 protected:
 
@@ -71,6 +79,7 @@ protected:
   size_t w_;
   /// height of a Canvas a.k.a. y_ axis
   size_t h_;
+
 };
 
 #endif // PPM_EDITOR_CMAKE_BUILD_DEBUG_CANVAS_H_
