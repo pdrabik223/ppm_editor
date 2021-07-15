@@ -4,7 +4,7 @@
 
 #ifndef PPM_EDITOR_CMAKE_BUILD_DEBUG_CANVAS_H_
 #define PPM_EDITOR_CMAKE_BUILD_DEBUG_CANVAS_H_
-#include "rgb_color.h"
+#include "ppm/rgb_color.h"
 #include <cstddef>
 
 struct Coord{

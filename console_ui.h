@@ -5,7 +5,7 @@
 #ifndef PPM_EDITOR__CONSOLE_UI_H_
 #define PPM_EDITOR__CONSOLE_UI_H_
 
-#include "rgb_color.h"
+#include "ppm/rgb_color.h"
 #include <string>
 class ConsoleUi {
 

@@ -2,8 +2,8 @@
 // Created by studio25 on 14.07.2021.
 //
 
-#ifndef PPM_EDITOR__BUTTON_H_
-#define PPM_EDITOR__BUTTON_H_
+#ifndef PPM_EDITOR_SCML_BUTTON_H_
+#define PPM_EDITOR_SCML_BUTTON_H_
 #include "../canvas.h"
 #include <string>
 
@@ -50,4 +50,4 @@ protected:
 };
 
 } // namespace scml
-#endif // PPM_EDITOR__BUTTON_H_
+#endif // PPM_EDITOR_SCML_BUTTON_H_

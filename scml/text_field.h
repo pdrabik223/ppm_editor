@@ -2,8 +2,8 @@
 // Created by studio25 on 15.07.2021.
 //
 
-#ifndef PPM_EDITOR__TEXT_FIELD_H_
-#define PPM_EDITOR__TEXT_FIELD_H_
+#ifndef PPM_EDITOR_SCML_TEXT_FIELD_H_
+#define PPM_EDITOR_SCML_TEXT_FIELD_H_
 
 #include "../canvas.h"
 #include "simple_console_media_layer.h"
@@ -35,4 +35,4 @@ private:
 };
 } // namespace scml
 
-#endif // PPM_EDITOR__TEXT_FIELD_H_
+#endif // PPM_EDITOR_SCML_TEXT_FIELD_H_
