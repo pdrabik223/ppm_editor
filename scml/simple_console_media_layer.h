@@ -25,10 +25,8 @@ enum class Event {
   BUTTON_6_PRESS,
   BUTTON_7_PRESS,
   BUTTON_8_PRESS,
-  BUTTON_9_PRESS
-
-
-
+  BUTTON_9_PRESS,
+  NONE
 };
 
 }

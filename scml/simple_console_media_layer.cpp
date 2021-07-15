@@ -51,3 +51,5 @@ bool Scml::AwaitEvent() {
     }
   }
 }
+
+Scml::Scml():last_event_(scml::Event::NONE) {}

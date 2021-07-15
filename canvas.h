@@ -8,6 +8,7 @@
 #include <cstddef>
 
 struct Coord{
+  Coord();
 
   Coord(const size_t &w, const size_t &h);
 

@@ -7,6 +7,9 @@ Coord::Coord(const size_t &w, const size_t &h) : w(w), h(h) {}
 
 size_t Coord::Convert21D(const size_t &w) { return h * w + w; }
 
+
+Coord::Coord(): w(0), h(0) {}
+
 RGBColor &Canvas::operator[](size_t position) { return pixels_[position]; }
 
 Canvas::Canvas(size_t width, size_t height) {
