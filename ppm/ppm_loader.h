@@ -12,6 +12,8 @@
 
 Canvas &LoadFromPpm(std::string path);
 
+void SaveToPpm(const Canvas & target,const std::string& path);
+
 bool IsComment(const char &letter);
 
 void IgnoreComment(std::fstream &plik);
