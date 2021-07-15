@@ -9,7 +9,8 @@ set(PPM
 
 SET(SCML
         simple_console_media_layer.h simple_console_media_layer.cpp
-        Button.h Button.cpp)
+        button.h button.cpp
+        text_field.h text_field.cpp)
 set(CONSOLE_UI
         console_ui.h console_ui.cpp
         ${SCML})
