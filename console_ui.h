@@ -11,19 +11,22 @@
 #include <string>
 class ConsoleUi {
 
+  ConsoleUi();
+
+  void SwapPixel();
+
 protected:
 
-std::string path_;
-unsigned image_height_;
-unsigned image_width_;
-unsigned image_no_pixels_;
-unsigned image_no_unique_pixels_;
+  Coord cursor_position_;
 
-scml::Button pixel_display_mode_;
-RGBColor* unique_pixels_;
+  std::string path_;
+  unsigned image_height_;
+  unsigned image_width_;
+  unsigned image_no_pixels_;
+  unsigned image_no_unique_pixels_;
 
-
-
+  scml::Button pixel_display_mode_;
+  RGBColor *unique_pixels_;
 
 
 };
