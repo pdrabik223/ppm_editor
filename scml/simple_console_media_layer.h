@@ -32,9 +32,11 @@ enum class Event {
 }
 
 #ifdef WIN32
+
 #include "../canvas.h"
 #include "button.h"
 #include "text_field.h"
+#include <windows.h>
 #include <string>
 #include <vector>
 
@@ -46,17 +48,18 @@ public:
 
   unsigned GetScreenHeight();
 
-  void DisplayText(Coord position, std::string text);
+  void DisplayText(Coord position, const std::string &text);
 
-  void DisplayButton(Coord position, scml::Button text);
+  void DisplayButton(const scml::Button& text);
 
-  void DisplayTextField(Coord position, scml::TextField text);
-
-  void DisplayTextField();
+  void DisplayTextField( const scml::TextField& text);
 
   bool AwaitEvent();
 
   void UpdateScreen();
+
+  void ClearScreen();
+
 
   scml::Event GetLastEvent() const;
 
@@ -66,6 +69,8 @@ private:
   Coord cursor_position_;
 
   scml::Event last_event_;
+
+  HANDLE hc_;
 
 };
 

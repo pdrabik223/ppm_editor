@@ -52,4 +52,46 @@ bool Scml::AwaitEvent() {
   }
 }
 
-Scml::Scml():last_event_(scml::Event::NONE) {}
+Scml::Scml() : last_event_(scml::Event::NONE) {
+  hc_ = GetStdHandle(STD_OUTPUT_HANDLE);
+}
+
+unsigned Scml::GetScreenWidth() {
+  _CONSOLE_SCREEN_BUFFER_INFO info;
+  GetConsoleScreenBufferInfo(hc_, &info);
+  return info.dwSize.X;
+}
+
+unsigned Scml::GetScreenHeight() {
+  _CONSOLE_SCREEN_BUFFER_INFO info;
+  GetConsoleScreenBufferInfo(hc_, &info);
+  return info.dwSize.Y;
+}
+
+void Scml::ClearScreen() {
+  SetConsoleCursorPosition(hc_, {0, 0});
+  for (std::string &line : display_bufor_)
+    for (char &c : line)
+      printf(" ");
+}
+
+void Scml::DisplayText(Coord position, const std::string &text) {
+
+  display_bufor_.resize(position.h);
+  display_bufor_[position.h].resize(position.w + text.size());
+
+  for (int i = 0; i < text.size(); i++)
+    display_bufor_[position.h][i + position.w] = text[i];
+}
+
+void Scml::DisplayButton(const scml::Button& button) {
+  DisplayText(button.GetPosition(),button.Display(cursor_position_));
+}
+void Scml::DisplayTextField( const scml::TextField &text_field) {
+  DisplayText(text_field.GetPosition(),text_field.Display());
+}
+void Scml::UpdateScreen() {
+  for (std::string &line : display_bufor_)
+    for (char &c : line)
+      printf("%c",c);
+}
