@@ -27,9 +27,9 @@ public:
 
   bool CheckBoundaries(Coord position);
 
-  std::string Display(Coord position);
+  const std::string Display(Coord position)const ;
 
-  const Coord &GetPosition() const;
+  const Coord GetPosition() const;
 
 
 

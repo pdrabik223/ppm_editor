@@ -23,7 +23,7 @@ bool scml::Button::CheckBoundaries(Coord position) {
   return false;
 }
 
-std::string scml::Button::Display(Coord position) {
+const std::string scml::Button::Display(Coord position) const {
   position.w -= position_.w;
 
   position.h -= position_.h;
@@ -51,4 +51,4 @@ std::string scml::Button::Display(Coord position) {
   }
 }
 
-const Coord &scml::Button::GetPosition() const { return position_; }
+const Coord scml::Button::GetPosition() const { return position_; }
