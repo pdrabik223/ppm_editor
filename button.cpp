@@ -43,8 +43,10 @@ std::string scml::Button::Display(Coord position) {
 
   case button::HighlightMode::UPPERCASE:
     std::string upper_case;
+
     for (char c : text_)
-      upper_case.push_back(c < 97 ? c - 32 : c);
+      upper_case.push_back((int)c < 97 ? c - 32 : c);
+
     return upper_case;
   }
 }
