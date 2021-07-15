@@ -65,6 +65,10 @@ void scml::TextField::CatchKeyBoard() {
     }
   }
 }
-std::string scml::TextField::Display() { return bufor_; }
+const std::string scml::TextField::Display()const  { return bufor_; }
+
 const std::string &scml::TextField::GetBufor() const { return bufor_; }
+
 void scml::TextField::ClearBufor() {bufor_.clear();}
+
+const Coord &scml::TextField::GetPosition() const { return position_; }

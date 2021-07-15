@@ -16,11 +16,13 @@ public:
 
   void CatchKeyBoard();
 
-  std::string Display();
+  const std::string Display()const ;
 
   const std::string &GetBufor() const;
 
   void ClearBufor();
+  const Coord &GetPosition() const;
+
 private:
   std::string bufor_;
 
