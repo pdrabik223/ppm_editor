@@ -21,5 +21,4 @@ set(CONSOLE_UI
 add_executable(ppm_editor
         main.cpp
         ${PPM}
-        ${CONSOLE_UI}
         canvas.h canvas.cpp)
