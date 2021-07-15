@@ -15,7 +15,19 @@ enum class Event {
   ARROW_UP_RELEASE,
   ARROW_DOWN_RELEASE,
   ARROW_LEFT_RELEASE,
-  ARROW_RIGHT_RELEASE
+  ARROW_RIGHT_RELEASE,
+  BUTTON_0_PRESS,
+  BUTTON_1_PRESS,
+  BUTTON_2_PRESS,
+  BUTTON_3_PRESS,
+  BUTTON_4_PRESS,
+  BUTTON_5_PRESS,
+  BUTTON_6_PRESS,
+  BUTTON_7_PRESS,
+  BUTTON_8_PRESS,
+  BUTTON_9_PRESS
+
+
 
 };
 
@@ -25,9 +37,11 @@ enum class Event {
 #include "canvas.h"
 #include <string>
 #include <vector>
+#include "button.h"
+#include "text_field.h"
 
 class Scml {
-
+public:
   Scml();
 
   unsigned GetScreenWidth();
@@ -36,18 +50,25 @@ class Scml {
 
   void DisplayText(Coord position, std::string text);
 
-  void DisplayButton(Coord position, Button text);
+  void DisplayButton(Coord position, scml::Button text);
+
+  void DisplayTextField(Coord position, scml::TextField text);
+
+  void DisplayTextField();
 
   bool AwaitEvent();
 
   void UpdateScreen();
 
-
+  scml::Event GetLastEvent() const;
 
 private:
   std::vector<std::string> display_bufor_;
 
   Coord cursor_position_;
+
+  scml::Event last_event_;
+
 };
 
 #endif
