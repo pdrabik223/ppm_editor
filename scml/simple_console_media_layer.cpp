@@ -84,14 +84,14 @@ void Scml::DisplayText(Coord position, const std::string &text) {
     display_bufor_[position.h][i + position.w] = text[i];
 }
 
-void Scml::DisplayButton(const scml::Button& button) {
-  DisplayText(button.GetPosition(),button.Display(cursor_position_));
+void Scml::DisplayButton(const scml::Button &text, Coord cursor_position) {
+  DisplayText(text.GetPosition(), text.Display(cursor_position));
 }
-void Scml::DisplayTextField( const scml::TextField &text_field) {
-  DisplayText(text_field.GetPosition(),text_field.Display());
+void Scml::DisplayTextField(const scml::TextField &text_field) {
+  DisplayText(text_field.GetPosition(), text_field.Display());
 }
 void Scml::UpdateScreen() {
   for (std::string &line : display_bufor_)
     for (char &c : line)
-      printf("%c",c);
+      printf("%c", c);
 }

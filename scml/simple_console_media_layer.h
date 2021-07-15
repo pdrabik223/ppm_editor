@@ -50,7 +50,7 @@ public:
 
   void DisplayText(Coord position, const std::string &text);
 
-  void DisplayButton(const scml::Button& text);
+  void DisplayButton(const scml::Button &text, Coord cursor_position);
 
   void DisplayTextField( const scml::TextField& text);
 
@@ -65,8 +65,6 @@ public:
 
 private:
   std::vector<std::string> display_bufor_;
-
-  Coord cursor_position_;
 
   scml::Event last_event_;
 
