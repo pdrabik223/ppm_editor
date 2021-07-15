@@ -9,21 +9,30 @@
 namespace scml {
 namespace button {
 
-enum class Highlight_mode {
+enum class HighlightMode {
   CHARACTER_LEFT,
   CHARACTER_RIGHT,
   BOTH_SIDES,
   UPPERCASE
 };
 
-}// namespace button
-
+} // namespace button
+/// classic button if you press it, it's pressed
+/// otherwise it's not
 class Button {
 public:
+  Button(const std::string &text, const Coord &position, unsigned int w,
+         unsigned int h);
+
+  bool CheckBoundaries(Coord position);
+
+  std::string Display(Coord position);
+
+  const Coord &GetPosition() const;
+
 
 
 protected:
-
   /// button text
   std::string text_;
 
@@ -34,14 +43,10 @@ protected:
   /// height of the button
   unsigned h_;
   /// highlight mode
-  button::Highlight_mode highlight_mode_;
+  button::HighlightMode highlight_mode_;
 
-  char highlight_character_;
-
+  std::pair<char,char> highlight_characters_;
 };
-
-
-
 
 } // namespace scml
 #endif // PPM_EDITOR__BUTTON_H_
