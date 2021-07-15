@@ -13,10 +13,11 @@ struct Coord{
 
   size_t Convert21D(const size_t &w);
 
+
   /// position in 2d space on x axis
-  size_t w_;
+  size_t w;
   /// position in 2d space on y axis
-  size_t h_;
+  size_t h;
 
 };
 
