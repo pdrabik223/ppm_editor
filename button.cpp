@@ -2,7 +2,7 @@
 // Created by studio25 on 14.07.2021.
 //
 
-#include "Button.h"
+#include "button.h"
 scml::Button::Button(const std::string &text, const Coord &position,
                      unsigned int w, unsigned int h)
     : text_(text), position_(position), w_(w), h_(h) {
