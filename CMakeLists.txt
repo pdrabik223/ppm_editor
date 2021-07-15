@@ -4,13 +4,13 @@ project(ppm_editor)
 set(CMAKE_CXX_STANDARD 14)
 
 set(PPM
-        file_exception.h
-        ppm_loader.h ppm_loader.cpp)
+        ppm/file_exception.h
+        ppm/ppm_loader.h ppm/ppm_loader.cpp)
 
 SET(SCML
-        simple_console_media_layer.h simple_console_media_layer.cpp
-        button.h button.cpp
-        text_field.h text_field.cpp)
+        scml/simple_console_media_layer.h scml/simple_console_media_layer.cpp
+        scml/button.h scml/button.cpp
+        scml/text_field.h scml/text_field.cpp)
 set(CONSOLE_UI
         console_ui.h console_ui.cpp
         ${SCML})
@@ -21,5 +21,5 @@ add_executable(ppm_editor
         ${PPM}
         ${CONSOLE_UI}
         canvas.h canvas.cpp
-        rgb_color.h
+        ppm/rgb_color.h
         )

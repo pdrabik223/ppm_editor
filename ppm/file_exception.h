@@ -2,8 +2,8 @@
 
 
 #pragma once
-#ifndef CONSOLE_CHESS_GUI_FILE_EXCEPTION_H_
-#define CONSOLE_CHESS_GUI_FILE_EXCEPTION_H_
+#ifndef PPM_EDITOR_PPM_FILE_EXCEPTION_H_
+#define PPM_EDITOR_PPM_FILE_EXCEPTION_H_
 #include <exception>
 namespace exception {
 
