@@ -34,11 +34,11 @@ enum class Event {
 }
 
 #ifdef WIN32
-#include "canvas.h"
-#include <string>
-#include <vector>
+#include "../canvas.h"
 #include "button.h"
 #include "text_field.h"
+#include <string>
+#include <vector>
 
 class Scml {
 public:

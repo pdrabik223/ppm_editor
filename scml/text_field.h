@@ -5,7 +5,7 @@
 #ifndef PPM_EDITOR__TEXT_FIELD_H_
 #define PPM_EDITOR__TEXT_FIELD_H_
 
-#include "canvas.h"
+#include "../canvas.h"
 #include "simple_console_media_layer.h"
 #include <string>
 namespace scml {

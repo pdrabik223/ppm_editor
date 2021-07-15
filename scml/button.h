@@ -4,7 +4,7 @@
 
 #ifndef PPM_EDITOR__BUTTON_H_
 #define PPM_EDITOR__BUTTON_H_
-#include "canvas.h"
+#include "../canvas.h"
 #include <string>
 
 namespace scml {
