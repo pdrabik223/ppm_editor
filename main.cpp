@@ -11,19 +11,16 @@ int SwapColors(Canvas &target, const std::vector<RGBColor> &unwanted_colors,
                RGBColor swap_color);
 int main() {
 
-//  Canvas plane =
-//      LoadFromPpm("C:\\Users\\studio25\\Pictures\\chess\\bishop_black.ppm");
-//  std::cout << plane.GetInfo();
-//
-// SaveToPpm(plane, "C:\\Users\\studio25\\Pictures\\chess\\bishop_black2.ppm");
-
-RGBColor test = {234,241,102};
-std::cout<<test<<std::endl;
-std::cout<<test.Hash()<<std::endl;
-RGBColor test_2(test.Hash());
-std::cout<<test_2<<std::endl;
+  Canvas plane =
+      LoadFromPpm("C:\\Users\\studio25\\Pictures\\chess\\test1.ppm");
+  std::cout << plane.GetInfo();
+  auto color_list_copy = plane.CountUniqueColors();
+  std::cout << "number of unique colors: " << color_list_copy.size()
+            << std::endl;
 
 
+  for (auto color : color_list_copy)
+    std::cout << color << std::endl;
 
   return 0;
 }

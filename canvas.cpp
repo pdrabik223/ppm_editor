@@ -4,6 +4,8 @@
 
 #include "canvas.h"
 
+unsigned Pow2(int exp) { return 1 << exp; }
+
 Coord::Coord(const size_t &w, const size_t &h) : w(w), h(h) {}
 
 size_t Coord::Convert21D(const size_t &w) { return h * w + this->w; }
@@ -68,11 +70,12 @@ size_t Canvas::CountColor(RGBColor color) {
 
   return counter;
 }
-std::vector<RGBColor> Canvas::GetUniqueColors() {
+
+std::vector<RGBColor> Canvas::CountUniqueColors() {
 
   std::vector<RGBColor> solution;
 
-  char* hash_array = new char[2097152];
+  char *hash_array = new char[2097152];
 
   memset(hash_array, 0, 2097152);
 
@@ -80,20 +83,20 @@ std::vector<RGBColor> Canvas::GetUniqueColors() {
 
     int local_hash = operator[](i).Hash();
 
-    hash_array[local_hash / 8] |= (char)(pow(2, local_hash % 8));
+    hash_array[local_hash / 8] |= (char)Pow2(local_hash & 255);
   }
-
-
-  unsigned counted_colors = 0;
 
   for (int i = 0; i < 2097152; i++) {
     for (int j = 0; j <= 8; j++) {
-      if (hash_array[i] & (char)pow(2, j)) { solution.push_back(i * pow(2, j)); }
+
+      if (hash_array[i] & (char)Pow2(j))
+        solution.emplace_back(i * 8 + Pow2(j));
+
+
     }
   }
 
   delete[] hash_array;
-
 
   return solution;
 }

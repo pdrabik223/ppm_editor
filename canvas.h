@@ -24,7 +24,7 @@ struct Coord{
 
 };
 
-
+unsigned Pow2(int);
 class Canvas {
 
 public:
@@ -62,7 +62,7 @@ public:
 
   std::string GetInfo();
 
-  std::vector<RGBColor> GetUniqueColors();
+  std::vector<RGBColor> CountUniqueColors();
 
   size_t CountColor(RGBColor color);
 
