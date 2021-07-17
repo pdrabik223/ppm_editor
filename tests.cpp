@@ -26,7 +26,7 @@ int main() {
 
   {
     std::cout << "ppm loader and GetWidth and GetHeight";
-    Canvas test = LoadFromPpm("../test1.ppm");
+    Canvas test = LoadFromPpm("../test1.ppm", <#initializer #>);
     assert(test.GetWidth() == 60);
     assert(test.GetHeight() == 60);
 

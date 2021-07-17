@@ -16,27 +16,28 @@ int SwapAllButWantedColors(Canvas &target,
 int main() {
   std::vector<std::string> paths;
   std::string directory = "C:\\Users\\studio25\\Pictures\\chess\\";
-  paths.emplace_back(directory + "king_black.ppm");
-  paths.emplace_back(directory + "king_white.ppm");
-  paths.emplace_back(directory + "queen_black.ppm");
-  paths.emplace_back(directory + "queen_white.ppm");
-  paths.emplace_back(directory + "pawn_black.ppm");
-  paths.emplace_back(directory + "pawn_white.ppm");
-  paths.emplace_back(directory + "rook_black.ppm");
-  paths.emplace_back(directory + "rook_white.ppm");
-  paths.emplace_back(directory + "night_black.ppm");
-  paths.emplace_back(directory + "night_white.ppm");
+  paths.push_back(directory + "king_black.ppm");
+  paths.push_back(directory + "king_white.ppm");
+  paths.push_back(directory + "queen_black.ppm");
+  paths.push_back(directory + "queen_white.ppm");
+  paths.push_back(directory + "pawn_black.ppm");
+  paths.push_back(directory + "pawn_white.ppm");
+  paths.push_back(directory + "rook_black.ppm");
+  paths.push_back(directory + "rook_white.ppm");
+  paths.push_back(directory + "night_black.ppm");
+  paths.push_back(directory + "night_white.ppm");
 
-  std::vector<RGBColor> unwanted_colors;
-  unwanted_colors.emplace_back(0, 0, 0);
-  unwanted_colors.emplace_back(0, 0, 1);
+  std::vector<RGBColor> wanted_colors;
+  wanted_colors.emplace_back(0, 0, 0);
+  wanted_colors.emplace_back(255, 0, 0);
 
-  for (auto path : paths) {
+  for (const auto& path : paths) {
+    Canvas plane;
 
-    Canvas plane = LoadFromPpm(path);
-    std::cout << path << std::endl;
+    LoadFromPpm(path, plane);
 
-    std::cout << SwapAllButWantedColors(plane, unwanted_colors, {0, 0, 1})
+    std::cout << path << "\t";
+    std::cout << SwapAllButWantedColors(plane, wanted_colors, {255, 0, 0})
               << std::endl;
     SaveToPpm(plane, path);
   }
@@ -90,6 +91,7 @@ int SwapAllButWantedColors(Canvas &target,
           goto skip_swap;
         }
       target.Pixel({x, y}) = swap_color;
+      change_counter++;
     skip_swap:;
     }
   return change_counter;
