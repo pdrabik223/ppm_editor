@@ -29,15 +29,14 @@ Canvas::Canvas(const Canvas &other) {
     pixels_[i] = other.pixels_[i];
 }
 
-
 Canvas::~Canvas() {
 delete[] pixels_;
 }
 
-
 void Canvas::Clear() {
   for (int i = 0; i < w_ * h_; ++i)
     pixels_[i] = {0, 0, 0};
+
 }
 
 void Canvas::Fill(RGBColor fill_color) {
@@ -105,4 +104,16 @@ std::vector<RGBColor> Canvas::CountUniqueColors() {
   delete[] hash_array;
 
   return solution;
+}
+void Canvas::Free() {
+  delete[] pixels_;
+  h_ = 0;
+  w_ = 0;
+}
+void Canvas::Free(size_t width, size_t height) {
+  delete[] pixels_;
+
+  h_ = width;
+  w_ = height;
+  pixels_ = new RGBColor[w_ * h_];
 }

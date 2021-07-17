@@ -29,7 +29,7 @@ class Canvas {
 
 public:
   /// Canvas always has to have size
-  Canvas() = delete;
+  Canvas():w_(0),h_(0),pixels_(nullptr){};
 
   /// basic copy constructor
   Canvas(const Canvas &other);
@@ -44,6 +44,12 @@ public:
   /// \param fill_color whole canvas will be overwritten with this color
   void Fill(RGBColor fill_color);
 
+  /// clears whole image and resizes it to 0,0
+  void Free();
+ /// clears whole image and resizes it to width, height
+ /// \param width new width of the clean image
+ /// \param height new width of the clean image
+  void Free(size_t width, size_t height);
 
   void SetPixel(Coord position, RGBColor color);
 
