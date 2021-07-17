@@ -7,6 +7,7 @@
 #include "ppm/rgb_color.h"
 #include <cstddef>
 #include <string>
+#include <vector>
 
 struct Coord{
   Coord();
@@ -60,6 +61,8 @@ public:
   RGBColor GetPixel(Coord position) const ;
 
   std::string GetInfo();
+
+  std::vector<RGBColor> GetUniqueColors();
 
   size_t CountColor(RGBColor color);
 
