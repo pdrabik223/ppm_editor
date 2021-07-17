@@ -29,6 +29,12 @@ Canvas::Canvas(const Canvas &other) {
     pixels_[i] = other.pixels_[i];
 }
 
+
+Canvas::~Canvas() {
+delete[] pixels_;
+}
+
+
 void Canvas::Clear() {
   for (int i = 0; i < w_ * h_; ++i)
     pixels_[i] = {0, 0, 0};

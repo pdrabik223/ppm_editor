@@ -73,6 +73,7 @@ public:
 
   size_t GetWidth() const;
   size_t GetHeight() const;
+  virtual ~Canvas();
 
 protected:
 
