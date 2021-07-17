@@ -17,13 +17,27 @@ int main() {
   assert(Pow2(8) == 256);
   std::cout << "[ ok ]\n";
 
-  std::cout << " hash() and constructor from integer";
+  std::cout << " hash() and constructor from integer ";
   {
     RGBColor test(123, 231, 32);
     assert(test == RGBColor(test.Hash()));
   }
   std::cout << "[ ok ]\n";
 
+  {
+    std::cout << "ppm loader and GetWidth and GetHeight";
+    Canvas test = LoadFromPpm("../test1.ppm");
+    assert(test.GetWidth() == 60);
+    assert(test.GetHeight() == 60);
 
+    std::cout << "[ ok ]\n";
+    std::cout << "number of unique colors";
+    assert(test.CountUniqueColors().size() == 4);
+
+    std::cout << "[ ok ]\n";
+
+    for (auto i : test.CountUniqueColors())
+      std::cout << i << std::endl;
+  }
   return 0;
 }
