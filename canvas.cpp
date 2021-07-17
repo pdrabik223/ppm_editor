@@ -74,6 +74,9 @@ size_t Canvas::CountColor(RGBColor color) {
 std::vector<RGBColor> Canvas::CountUniqueColors() {
 
   std::vector<RGBColor> solution;
+  // we have here 24 bit pixels
+  // 2^24 = 16777216
+  // 16777216 / 8 = 2097152
 
   char *hash_array = new char[2097152];
 
@@ -81,19 +84,16 @@ std::vector<RGBColor> Canvas::CountUniqueColors() {
 
   for (size_t i = 0; i < w_ * h_; i++) {
 
-    int local_hash = operator[](i).Hash();
+    unsigned local_hash = operator[](i).Hash();
 
-    hash_array[local_hash / 8] |= (char)Pow2(local_hash & 255);
-  }
+    unsigned byte_no = local_hash / 8;
+    unsigned bite_no = local_hash % 8;
 
-  for (int i = 0; i < 2097152; i++) {
-    for (int j = 0; j <= 8; j++) {
-
-      if (hash_array[i] & (char)Pow2(j))
-        solution.emplace_back(i * 8 + Pow2(j));
-
-
+    if (!(hash_array[byte_no] & Pow2(bite_no))) {
+      solution.emplace_back(operator[](i));
     }
+      hash_array[byte_no] |= Pow2(bite_no);
+
   }
 
   delete[] hash_array;
