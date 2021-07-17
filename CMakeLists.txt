@@ -22,3 +22,8 @@ add_executable(ppm_editor
         main.cpp
         ${PPM}
         canvas.h canvas.cpp)
+
+add_executable(test
+        tests.cpp
+        ${PPM}
+        canvas.h canvas.cpp)
