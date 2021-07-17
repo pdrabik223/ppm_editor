@@ -77,7 +77,7 @@ void ReadHeader(std::fstream &plik) {
   throw invalid_file_format;
 }
 
-Canvas &LoadFromPpm(std::string path) {
+void LoadFromPpm(std::string path, Canvas &image) {
 
   std::fstream plik;
   plik.open(path, std::ios::in);
@@ -119,7 +119,7 @@ Canvas &LoadFromPpm(std::string path) {
 
       target_image[i] = {R, G, B};
     }
-    return target_image;
+
 
   } else {
     // in case of invalid path

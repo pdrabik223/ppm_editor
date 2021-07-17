@@ -10,7 +10,7 @@
 #ifndef PPM_LOADER_H_
 #define PPM_LOADER_H_
 
-Canvas &LoadFromPpm(std::string path);
+void LoadFromPpm(std::string path, Canvas &image);
 
 void SaveToPpm(const Canvas & target,const std::string& path);
 
