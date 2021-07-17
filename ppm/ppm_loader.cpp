@@ -98,8 +98,7 @@ Canvas &LoadFromPpm(std::string path) {
 
     size_t array_size = image_height * image_width; // tymczasowa  zmienna
 
-    Canvas target_image(image_height , image_width);
-
+    Canvas target_image(image_height, image_width);
 
     for (unsigned i = 0; i < array_size; i++) {
 
@@ -118,7 +117,7 @@ Canvas &LoadFromPpm(std::string path) {
       }
       unsigned char B = CheckColor(ReadNumber(plik));
 
-      target_image[i] = {R,G,B};
+      target_image[i] = {R, G, B};
     }
     return target_image;
 
@@ -128,36 +127,37 @@ Canvas &LoadFromPpm(std::string path) {
   }
 }
 
-void SaveToPpm(const Canvas & target,const std::string& path){
+void SaveToPpm(const Canvas &target, const std::string &path) {
   std::ofstream myfile;
-  myfile.open (path);
-  myfile<<"P3\n";
-  myfile<<target.GetWidth();
-  myfile<<" ";
-  myfile<<target.GetHeight();
-  myfile<<"\n";
+  myfile.open(path);
+
+  myfile << "P3\n";
+  myfile << target.GetWidth();
+  myfile << " ";
+  myfile << target.GetHeight();
+
+  myfile << "\n";
   myfile << 255;
-  myfile<<"\n";
+  myfile << "\n";
 
+  size_t l = 0;
 
-  int l = 0;
+  for (size_t y = 0; y < target.GetHeight(); y++) {
+    for (size_t x = 0; x < target.GetWidth(); x++) {
 
-  for (size_t x = 0; x < target.GetWidth(); x++)
-    for (size_t y = 0; y < target.GetHeight(); y++) {
+      myfile << (int)target.GetPixel({x, y}).GetR();
+      myfile << " ";
+      myfile << (int)target.GetPixel({x, y}).GetG();
+      myfile << " ";
+      myfile << (int)target.GetPixel({x, y}).GetB();
+      myfile << " ";
 
-      myfile<<(int)target.GetPixel({x, y}).GetR();
-      myfile<<" ";
-      myfile<<(int)target.GetPixel({x, y}).GetG();
-      myfile<<" ";
-      myfile<<(int)target.GetPixel({x, y}).GetB();
-      myfile<<" ";
-
-      l += (3 * 3 + 3);
-      if(l > 70) {
+      l += 12;
+      if (l > 70) {
         l = 0;
-        myfile<<"\n";
+        myfile << "\n";
       }
-
     }
+  }
   myfile.close();
 }
