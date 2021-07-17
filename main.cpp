@@ -14,16 +14,32 @@ int SwapAllButWantedColors(Canvas &target,
                            const std::vector<RGBColor> &unwanted_colors,
                            RGBColor swap_color);
 int main() {
+  std::vector<std::string> paths;
+  std::string directory = "C:\\Users\\studio25\\Pictures\\chess\\";
+  paths.emplace_back(directory + "king_black.ppm");
+  paths.emplace_back(directory + "king_white.ppm");
+  paths.emplace_back(directory + "queen_black.ppm");
+  paths.emplace_back(directory + "queen_white.ppm");
+  paths.emplace_back(directory + "pawn_black.ppm");
+  paths.emplace_back(directory + "pawn_white.ppm");
+  paths.emplace_back(directory + "rook_black.ppm");
+  paths.emplace_back(directory + "rook_white.ppm");
+  paths.emplace_back(directory + "night_black.ppm");
+  paths.emplace_back(directory + "night_white.ppm");
 
-  Canvas plane =
-      LoadFromPpm("C:\\Users\\studio25\\Pictures\\chess\\bishop_black.ppm");
-  std::cout << plane.GetInfo();
   std::vector<RGBColor> unwanted_colors;
   unwanted_colors.emplace_back(0, 0, 0);
   unwanted_colors.emplace_back(0, 0, 1);
-  SwapAllButWantedColors(plane, unwanted_colors, {0, 0, 1});
-  SaveToPpm(plane, "C:\\Users\\studio25\\Pictures\\chess\\bishop_black2.ppm");
 
+  for (auto path : paths) {
+
+    Canvas plane = LoadFromPpm(path);
+    std::cout << path << std::endl;
+
+    std::cout << SwapAllButWantedColors(plane, unwanted_colors, {0, 0, 1})
+              << std::endl;
+    SaveToPpm(plane, path);
+  }
   return 0;
 }
 
