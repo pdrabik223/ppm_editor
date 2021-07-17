@@ -7,20 +7,22 @@
 #include <vector>
 
 int RaundUpTobpm(Canvas &target);
-int SwapColors(Canvas &target, const std::vector<RGBColor> &unwanted_colors,
-               RGBColor swap_color);
+int SwapUnwantedColors(Canvas &target,
+                       const std::vector<RGBColor> &unwanted_colors,
+                       RGBColor swap_color);
+int SwapAllButWantedColors(Canvas &target,
+                           const std::vector<RGBColor> &unwanted_colors,
+                           RGBColor swap_color);
 int main() {
 
   Canvas plane =
-      LoadFromPpm("C:\\Users\\studio25\\Pictures\\chess\\test1.ppm");
+      LoadFromPpm("C:\\Users\\studio25\\Pictures\\chess\\bishop_black.ppm");
   std::cout << plane.GetInfo();
-  auto color_list_copy = plane.CountUniqueColors();
-  std::cout << "number of unique colors: " << color_list_copy.size()
-            << std::endl;
-
-
-  for (auto color : color_list_copy)
-    std::cout << color << std::endl;
+  std::vector<RGBColor> unwanted_colors;
+  unwanted_colors.emplace_back(0, 0, 0);
+  unwanted_colors.emplace_back(0, 0, 1);
+  SwapAllButWantedColors(plane, unwanted_colors, {0, 0, 1});
+  SaveToPpm(plane, "C:\\Users\\studio25\\Pictures\\chess\\bishop_black2.ppm");
 
   return 0;
 }
@@ -53,7 +55,26 @@ int SwapColors(Canvas &target, const std::vector<RGBColor> &unwanted_colors,
         if (color == target.Pixel({x, y})) {
           target.Pixel({x, y}) = swap_color;
           change_counter++;
+          break;
         }
+    }
+  return change_counter;
+}
+
+int SwapAllButWantedColors(Canvas &target,
+                           const std::vector<RGBColor> &wanted_colors,
+                           RGBColor swap_color) {
+  int change_counter = 0;
+
+  for (size_t x = 0; x < target.GetWidth(); x++)
+    for (size_t y = 0; y < target.GetHeight(); y++) {
+
+      for (RGBColor color : wanted_colors)
+        if (color == target.Pixel({x, y})) {
+          goto skip_swap;
+        }
+      target.Pixel({x, y}) = swap_color;
+    skip_swap:;
     }
   return change_counter;
 }
