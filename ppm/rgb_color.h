@@ -10,7 +10,7 @@ struct RGBColor {
 
   RGBColor(unsigned char r, unsigned char g, unsigned char b)
       : r(r), g(g), b(b) {}
-  RGBColor(int hash) : r(hash & 16711680), g(hash & 65280), b(hash & 255) {}
+  RGBColor(int hash) : r((hash & 16711680)>>16), g((hash & 65280)>>8), b(hash & 255) {}
   unsigned char GetR() const { return r; }
   unsigned char GetG() const { return g; }
   unsigned char GetB() const { return b; }
