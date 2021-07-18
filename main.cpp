@@ -15,7 +15,7 @@ int SwapAllButWantedColors(Canvas &target,
                            RGBColor swap_color);
 int main() {
   std::vector<std::string> paths;
-  std::string directory = "C:\\Users\\studio25\\Pictures\\chess\\";
+  std::string directory = "C:\\Users\\studio25\\Pictures\\chess\\ppm\\";
   paths.push_back(directory + "king_black.ppm");
   paths.push_back(directory + "king_white.ppm");
   paths.push_back(directory + "queen_black.ppm");
@@ -24,14 +24,14 @@ int main() {
   paths.push_back(directory + "pawn_white.ppm");
   paths.push_back(directory + "rook_black.ppm");
   paths.push_back(directory + "rook_white.ppm");
-  paths.push_back(directory + "night_black.ppm");
-  paths.push_back(directory + "night_white.ppm");
+  paths.push_back(directory + "knight_black.ppm");
+  paths.push_back(directory + "knight_white.ppm");
 
   std::vector<RGBColor> wanted_colors;
   wanted_colors.emplace_back(0, 0, 0);
   wanted_colors.emplace_back(255, 0, 0);
 
-  for (const auto& path : paths) {
+  for (const auto &path : paths) {
     Canvas plane;
 
     LoadFromPpm(path, plane);
@@ -83,16 +83,18 @@ int SwapAllButWantedColors(Canvas &target,
                            RGBColor swap_color) {
   int change_counter = 0;
 
-  for (size_t x = 0; x < target.GetWidth(); x++)
+
+  for (size_t x = 0; x < target.GetWidth(); x++) {
     for (size_t y = 0; y < target.GetHeight(); y++) {
 
       for (RGBColor color : wanted_colors)
-        if (color == target.Pixel({x, y})) {
+        if (color == target.Pixel({x, y}))
           goto skip_swap;
-        }
+
       target.Pixel({x, y}) = swap_color;
       change_counter++;
     skip_swap:;
     }
+  }
   return change_counter;
 }

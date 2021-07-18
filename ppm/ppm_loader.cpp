@@ -98,7 +98,7 @@ void LoadFromPpm(std::string path, Canvas &image) {
 
     size_t array_size = image_height * image_width; // tymczasowa  zmienna
 
-    Canvas target_image(image_height, image_width);
+    image.Free(image_height, image_width);
 
     for (unsigned i = 0; i < array_size; i++) {
 
@@ -117,7 +117,7 @@ void LoadFromPpm(std::string path, Canvas &image) {
       }
       unsigned char B = CheckColor(ReadNumber(plik));
 
-      target_image[i] = {R, G, B};
+      image[i] = {R, G, B};
     }
 
 
